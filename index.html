@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDX Validation</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <script src="bower_components/angularjs/angular.min.js"></script>
+    <script src="app/module.js"></script>
+</head>
+<body ng-app="pdxValidation">
+
+<div ng-controller="pdx" class="row">
+    <form name="form" class="col-xs-6">
+        <h1>PDX Validation</h1>
+
+        <div class="form-group" ng-class="{'has-error': form.currency.$invalid, 'has-success': form.currency.$valid}">
+            <label class="control-label">Currency:</label>
+            <input name="currency" required currency ng-model="f.currency" class="form-control">
+            <span ng-if="form.currency.$error[type]" ng-repeat="type in helpTypes" class="help-block">
+                 {{help[type]}}
+            </span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': form.integer.$invalid, 'has-success': form.integer.$valid}">
+            <label class="control-label">Integer:</label>
+            <input name="integer" integer ng-model="f.integer" class="form-control">
+             <span ng-if="form.integer.$error[type]" ng-repeat="type in helpTypes" class="help-block">
+                 {{help[type]}}
+             </span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': form.time.$invalid, 'has-success': form.time.$valid}">
+            <label class="control-label">Time:</label>
+            <input name="time" time ng-model="f.time" class="form-control">
+             <span ng-if="form.time.$error[type]" ng-repeat="type in helpTypes" class="help-block">
+                 {{help[type]}}
+             </span>
+        </div>
+
+
+        <button ng-disabled="form.$invalid" class="btn btn-primary" ng-click="showF(f)">Submit</button>
+    </form>
+</div>
+
+
+</body>
+</html>
