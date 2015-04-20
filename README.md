@@ -1,6 +1,6 @@
 # pdx-validation
-angularjs form validation utils.
+angularjs form validation directives.
 
-Directives and Templates
+CURRENCY, TIME and INTEGER directives and template usage based bootstrap 3.
 
 run bower install before run
