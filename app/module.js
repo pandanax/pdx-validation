@@ -1,4 +1,42 @@
 angular.module('pdxValidation', [])
+    .directive('password', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, elm, attrs, ctrl) {
+                ctrl.$parsers.unshift(function (viewValue) {
+                        var regExp;
+
+                        if (viewValue === '') {
+                            ctrl.$setValidity('password', true);
+                            return viewValue;
+                        }
+
+                        var length = attrs.password || 6;
+
+
+                        if (viewValue.length < length) {
+                            ctrl.$setValidity('password', false);
+                            return undefined;
+                        }
+                        regExp = /[0-9]/;
+                        if (!regExp.test(viewValue)) {
+                            ctrl.$setValidity('password', false);
+                            return undefined;
+                        }
+                        regExp = /[a-zA-Z]/;
+                        if (!regExp.test(viewValue)) {
+                            ctrl.$setValidity('password', false);
+                            return undefined;
+                        }
+
+                        ctrl.$setValidity('password', true);
+                        return viewValue;
+                    }
+                )
+                ;
+            }
+        };
+    })
     .directive('currency', function () {
         return {
             require: 'ngModel',
@@ -95,11 +133,13 @@ angular.module('pdxValidation', [])
         }])
     .controller('pdx', ['$scope', function ($scope) {
         $scope.f = {};
+        $scope.pswLength = 9;
         $scope.help = {
             required: 'field is required',
             currency: 'field must be a currency (12.34)',
             integer: 'field must be an integer',
-            time: 'field must be a time (12:34)'
+            time: 'field must be a time (12:34)',
+            password: 'password must contain numbers, big and small letters, and length must be more or equal ' + $scope.pswLength
         };
         $scope.helpTypes = [];
         angular.forEach($scope.help, function (v, k) {
@@ -109,4 +149,5 @@ angular.module('pdxValidation', [])
         $scope.showF = function (f) {
             console.log('data', f);
         }
-    }]);
+    }])
+;
