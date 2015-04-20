@@ -1,2 +1,3 @@
 # pdx-validation
-angularjs form validation and parsers utils
+angularjs form validation utils
+Directives and Templates
