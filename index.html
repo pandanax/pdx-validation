@@ -14,7 +14,7 @@
         <h1>PDX Validation</h1>
 
         <div class="form-group" ng-class="{'has-error': form.currency.$invalid, 'has-success': form.currency.$valid}">
-            <label class="control-label">Currency:</label>
+            <label class="control-label">Currency <sup>*</sup>:</label>
             <input name="currency" required currency ng-model="f.currency" class="form-control">
             <span ng-if="form.currency.$error[type]" ng-repeat="type in helpTypes" class="help-block">
                  {{help[type]}}
@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-group" ng-class="{'has-error': form.password.$invalid, 'has-success': form.password.$valid}">
-            <label class="control-label">Password:</label>
+            <label class="control-label">Password <sup>*</sup>:</label>
             <input name="password" required password="{{pswLength}}" ng-model="f.password" class="form-control">
              <span ng-if="form.password.$error[type]" ng-repeat="type in helpTypes" class="help-block">
                  {{help[type]}}
