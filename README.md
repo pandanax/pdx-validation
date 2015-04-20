@@ -1,7 +1,7 @@
 # pdx-validation
 angularjs form validation directives.
 
-Application contain next validation directives
+Application contain next validation directives:
 
 1) "currency" - "12.34" format
 
